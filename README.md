@@ -9,7 +9,7 @@ The system distinguishes between:
 
 ## Features
 
-- Custom dataset of 80+ AI use cases
+- Custom dataset of about 90 AI use cases
 - Hugging Face text classification model
 - FastAPI backend for real-time predictions
 - React frontend for interactive testing
@@ -20,6 +20,15 @@ The system distinguishes between:
 - Python (Transformers, Datasets, PyTorch)
 - FastAPI
 - React (Vite)
+
+## Models
+
+Two models were tested:
+
+- DistilBERT baseline model
+- RoBERTa fine-tuned model with stronger classification performance
+
+The RoBERTa model produced clearer separation between the four risk categories.
 
 ## Run locally
 

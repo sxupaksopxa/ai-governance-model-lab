@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
 
-MODEL_DIR = "models/ai-risk-classifier"
+MODEL_DIR = "models/ai-risk-classifier-roberta"
 
 
 def predict(text: str):

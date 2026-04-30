@@ -8,9 +8,9 @@ from transformers import (
 import evaluate
 import numpy as np
 
-MODEL_NAME = "distilbert-base-uncased"
+MODEL_NAME = "roberta-base"
 DATA_PATH = "data/training_data.jsonl"
-OUTPUT_DIR = "models/ai-risk-classifier"
+OUTPUT_DIR = "models/ai-risk-classifier-roberta"
 
 labels = [
     "lower_risk",
@@ -28,7 +28,7 @@ dataset = load_dataset("json", data_files=DATA_PATH, split="train")
 dataset = dataset.map(lambda row: {"label": label2id[row["label"]]})
 dataset = dataset.train_test_split(test_size=0.25, seed=42)
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=False)
 
 
 def tokenize(batch):
