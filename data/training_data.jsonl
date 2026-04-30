@@ -1,5 +1,5 @@
 {"text":"We use AI to summarize customer feedback for internal reporting.","label":"lower_risk"}
-{"text":"Our AI recommends products to customers based on general preferences.","label":"lower_risk"}
+{"text":"Our AI recommends products to customers based on general preferences.","label":"possible_high_risk"}
 {"text":"A company uses an AI assistant to draft marketing text and summarize product information for internal review.","label":"lower_risk"}
 {"text":"An organization uses AI to summarize meeting notes and extract action items for employees.","label":"lower_risk"}
 {"text":"A company uses an AI chatbot to answer basic customer questions about services and opening hours.","label":"lower_risk"}
@@ -12,12 +12,13 @@
 {"text":"An AI system flags potential spam messages for internal review.","label":"lower_risk"}
 {"text":"We use AI to optimize server resource usage in our IT systems.","label":"lower_risk"}
 {"text":"AI categorizes customer support tickets.","label":"lower_risk"}
-{"text":"The system uses AI to personalize product recommendations in online shopping.","label":"lower_risk"}
-{"text":"A TV platform uses AI to personalize movie recommendations for viewers.","label":"lower_risk"}
-{"text":"AI analyzes GPS data to recommend optimal routes for drivers.","label":"lower_risk"}
-{"text":"A platform uses AI to recommend products based on general user preferences.","label":"lower_risk"}
 {"text":"We use AI to summarize internal emails for employees.","label":"lower_risk"}
 {"text":"An AI tool generates meeting summaries without affecting any decisions about people.","label":"lower_risk"}
+{"text":"A platform uses AI to recommend content based on user preferences without attempting to manipulate or exploit vulnerabilities.","label":"possible_high_risk"}
+{"text":"AI analyzes GPS data to recommend optimal routes for drivers.","label":"possible_high_risk"}
+{"text":"A platform uses AI to recommend products based on general user preferences.","label":"possible_high_risk"}
+{"text":"The system uses AI to personalize product recommendations in online shopping.","label":"possible_high_risk"}
+{"text":"A TV platform uses AI to personalize movie recommendations for viewers.","label":"possible_high_risk"}
 {"text":"AI prioritizes customer complaints based on urgency and customer profile.","label":"possible_high_risk"}
 {"text":"We use AI to support financial decisions, but a human reviews and approves the final outcome.","label":"possible_high_risk"}
 {"text":"A financial service provider uses AI to sort incoming claims into processing queues. The AI output influences which cases are reviewed first, while staff still handle the claims.","label":"possible_high_risk"}
@@ -57,6 +58,7 @@
 {"text":"An airport uses AI-based facial recognition to verify passenger identity by matching facial images with passport data before granting access to boarding gates.","label":"likely_high_risk"}
 {"text":"A healthcare provider uses AI to decide which patients should receive priority treatment based on their medical data.","label":"likely_high_risk"}
 {"text":"An AI system automatically approves or rejects insurance claims based on predefined criteria.","label":"likely_high_risk"}
+{"text":"An AI system automatically rejects social benefit applications if the applicant’s monthly income exceeds the eligibility threshold.","label":"likely_high_risk"}
 {"text":"A platform uses AI to automatically decide which users are banned for policy violations.","label":"likely_high_risk"}
 {"text":"An AI system evaluates loan applications and recommends approval or rejection.","label":"likely_high_risk"}
 {"text":"A platform uses AI to target vulnerable users with personalized financial offers.","label":"potentially_prohibited"}
@@ -70,7 +72,6 @@
 {"text":"An organization uses AI to assign trustworthiness scores to individuals based on their behavior across different services.","label":"potentially_prohibited"}
 {"text":"A platform uses AI to identify users' emotional weaknesses and exploit them to increase engagement.","label":"potentially_prohibited"}
 {"text":"An organization uses AI to assign behavioral risk scores to individuals across multiple services.","label":"potentially_prohibited"}
-{"text":"A platform uses AI to recommend content based on user preferences without attempting to manipulate or exploit vulnerabilities.","label":"lower_risk"}
 {"text":"An AI system targets emotionally vulnerable people with financial offers they would not otherwise choose.","label":"potentially_prohibited"}
 {"text":"A platform uses AI to exploit users' psychological weaknesses to increase purchases.","label":"potentially_prohibited"}
 {"text":"An app uses AI to pressure vulnerable users into buying expensive products.","label":"potentially_prohibited"}
@@ -84,5 +85,4 @@
 {"text":"An AI system assesses grant applications and automatically decides whether to approve or reject them based on eligibility criteria.","label":"likely_high_risk"}
 {"text":"An AI system systematically favors large companies over small businesses when deciding grant approvals, regardless of eligibility criteria.","label":"potentially_prohibited"}
 {"text":"An AI system ranks social benefit applications based on applicants' monthly income so staff can review higher-priority cases first.","label":"possible_high_risk"}
-{"text":"An AI system automatically rejects social benefit applications if the applicant’s monthly income exceeds the eligibility threshold.","label":"likely_high_risk"}
 {"text":"An AI system rejects social benefit applications without considering essential medical expenses, systematically disadvantaging vulnerable applicants.","label":"potentially_prohibited"}
