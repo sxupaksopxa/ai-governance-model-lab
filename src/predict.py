@@ -1,0 +1,53 @@
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+
+MODEL_DIR = "models/ai-risk-classifier"
+
+
+def predict(text: str):
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+
+    inputs = tokenizer(
+        text,
+        return_tensors="pt",
+        truncation=True,
+        padding=True,
+        max_length=160,
+    )
+
+    with torch.no_grad():
+        outputs = model(**inputs)
+
+    probabilities = torch.softmax(outputs.logits, dim=-1)[0]
+    predicted_id = torch.argmax(probabilities).item()
+
+    label = model.config.id2label[predicted_id]
+    confidence = probabilities[predicted_id].item()
+
+    return label, confidence
+
+
+if __name__ == "__main__":
+    examples = [
+        "We use AI to summarize internal meeting notes.",
+        "An AI system recommends which job applicants should be rejected.",
+        "A company uses AI to manipulate vulnerable users into buying financial products.",
+        "A system ranks insurance claims for staff review.",
+    ]
+
+for text in examples:
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=160)
+
+    with torch.no_grad():
+        outputs = model(**inputs)
+
+    probabilities = torch.softmax(outputs.logits, dim=-1)[0]
+
+    print("\nText:", text)
+    for i, prob in enumerate(probabilities):
+        print(model.config.id2label[i], ":", round(prob.item(), 4))

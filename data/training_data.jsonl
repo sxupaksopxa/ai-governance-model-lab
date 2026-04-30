@@ -1,0 +1,88 @@
+{"text":"We use AI to summarize customer feedback for internal reporting.","label":"lower_risk"}
+{"text":"Our AI recommends products to customers based on general preferences.","label":"lower_risk"}
+{"text":"A company uses an AI assistant to draft marketing text and summarize product information for internal review.","label":"lower_risk"}
+{"text":"An organization uses AI to summarize meeting notes and extract action items for employees.","label":"lower_risk"}
+{"text":"A company uses an AI chatbot to answer basic customer questions about services and opening hours.","label":"lower_risk"}
+{"text":"A team uses AI to translate internal documents before employees review and publish them.","label":"lower_risk"}
+{"text":"We use AI to generate internal presentations and documentation summaries for employees.","label":"lower_risk"}
+{"text":"An AI tool helps draft marketing emails for review before sending.","label":"lower_risk"}
+{"text":"We use AI to categorize customer support tickets by topic for internal routing.","label":"lower_risk"}
+{"text":"An AI tool generates draft reports for employees to review and finalize.","label":"lower_risk"}
+{"text":"We use AI to detect duplicate records in internal databases.","label":"lower_risk"}
+{"text":"An AI system flags potential spam messages for internal review.","label":"lower_risk"}
+{"text":"We use AI to optimize server resource usage in our IT systems.","label":"lower_risk"}
+{"text":"AI categorizes customer support tickets.","label":"lower_risk"}
+{"text":"The system uses AI to personalize product recommendations in online shopping.","label":"lower_risk"}
+{"text":"A TV platform uses AI to personalize movie recommendations for viewers.","label":"lower_risk"}
+{"text":"AI analyzes GPS data to recommend optimal routes for drivers.","label":"lower_risk"}
+{"text":"A platform uses AI to recommend products based on general user preferences.","label":"lower_risk"}
+{"text":"We use AI to summarize internal emails for employees.","label":"lower_risk"}
+{"text":"An AI tool generates meeting summaries without affecting any decisions about people.","label":"lower_risk"}
+{"text":"AI prioritizes customer complaints based on urgency and customer profile.","label":"possible_high_risk"}
+{"text":"We use AI to support financial decisions, but a human reviews and approves the final outcome.","label":"possible_high_risk"}
+{"text":"A financial service provider uses AI to sort incoming claims into processing queues. The AI output influences which cases are reviewed first, while staff still handle the claims.","label":"possible_high_risk"}
+{"text":"A financial services provider uses AI to pre-assess credit applications and prioritize them for staff review.","label":"possible_high_risk"}
+{"text":"A public-sector team uses AI to prioritize incoming benefits-related cases for staff review. The system does not make final decisions, but it influences which people are reviewed first.","label":"possible_high_risk"}
+{"text":"A company uses AI to prepare internal promotion review packs and highlight candidates for manager attention. Managers make the final decision, but the AI output influences which employees receive closer consideration.","label":"possible_high_risk"}
+{"text":"A company uses AI to prioritize insurance claims for review, but staff process all claims manually.","label":"possible_high_risk"}
+{"text":"A system ranks job applications to decide which candidates are reviewed first by recruiters.","label":"possible_high_risk"}
+{"text":"An AI system recommends suitable candidates for a job, but recruiters make all final decisions.","label":"possible_high_risk"}
+{"text":"A system assigns risk scores to insurance claims to guide staff review, but does not make decisions.","label":"possible_high_risk"}
+{"text":"An AI system flags potentially fraudulent transactions for staff investigation.","label":"possible_high_risk"}
+{"text":"A platform uses AI to suggest which users should receive targeted offers, influencing customer engagement decisions.","label":"possible_high_risk"}
+{"text":"A monitoring system uses AI to classify employee security activities and flag suspicious behavior for review.","label":"possible_high_risk"}
+{"text":"An AI system ranks job applications for recruiter review.","label":"possible_high_risk"}
+{"text":"AI suggests which employees should be reviewed for promotion.","label":"possible_high_risk"}
+{"text":"A system ranks insurance claims for staff review.","label":"possible_high_risk"}
+{"text":"AI prioritizes loan applications for staff review.","label":"possible_high_risk"}
+{"text":"An AI system suggests candidates for recruiter review.","label":"possible_high_risk"}
+{"text":"An AI system ranks insurance claims for staff review only.","label":"possible_high_risk"}
+{"text":"An AI system recommends whether insurance claims should be approved or rejected.","label":"likely_high_risk"}
+{"text":"An AI system automatically approves or rejects insurance claims.","label":"likely_high_risk"}
+{"text":"An AI system recommends rejecting job applicants based on evaluation scores.","label":"likely_high_risk"}
+{"text":"An AI system automatically rejects job applicants without human review.","label":"likely_high_risk"}
+{"text":"AI recommends approval or rejection of loan applications.","label":"likely_high_risk"}
+{"text":"A system recommends whether insurance claims should be approved or rejected.","label":"likely_high_risk"}
+{"text":"AI decides which employees are promoted.","label":"likely_high_risk"}
+{"text":"An AI system decides which job applicants are accepted or rejected.","label":"likely_high_risk"}
+{"text":"An AI system recommends which job applicants should be rejected or accepted.","label":"likely_high_risk"}
+{"text":"Our AI evaluates employee performance and produces scores used in performance reviews.","label":"likely_high_risk"}
+{"text":"We use AI to recommend medical decisions, which doctors review before acting.","label":"likely_high_risk"}
+{"text":"Our HR system uses AI to help decide on employee performance, with only limited human oversight.","label":"likely_high_risk"}
+{"text":"A company uses AI to assess employee records and recommend promotions. Managers review selected cases, but the system still influences promotion outcomes.","label":"likely_high_risk"}
+{"text":"An educational institution uses AI to score and rank student applications before admission decisions. Staff review the recommendations, but the system directly shapes who is accepted or rejected.","label":"likely_high_risk"}
+{"text":"A financial services provider uses AI to assess consumer loan applications and recommend approval or rejection. Human reviewers remain involved, but the system has direct impact on access to financial services.","label":"likely_high_risk"}
+{"text":"A public-sector body uses AI to assess eligibility for access to a public service and recommend approval or rejection. Staff review the case, but the AI output directly affects how people are treated.","label":"likely_high_risk"}
+{"text":"A company uses AI to analyse recorded interview answers and generate a suitability score for candidates. Recruiters use this score to filter applicants.","label":"likely_high_risk"}
+{"text":"An airport uses AI-based facial recognition to verify passenger identity by matching facial images with passport data before granting access to boarding gates.","label":"likely_high_risk"}
+{"text":"A healthcare provider uses AI to decide which patients should receive priority treatment based on their medical data.","label":"likely_high_risk"}
+{"text":"An AI system automatically approves or rejects insurance claims based on predefined criteria.","label":"likely_high_risk"}
+{"text":"A platform uses AI to automatically decide which users are banned for policy violations.","label":"likely_high_risk"}
+{"text":"An AI system evaluates loan applications and recommends approval or rejection.","label":"likely_high_risk"}
+{"text":"A platform uses AI to target vulnerable users with personalized financial offers.","label":"potentially_prohibited"}
+{"text":"An AI system manipulates vulnerable users into taking high-risk loans.","label":"potentially_prohibited"}
+{"text":"We would like to use AI to manipulate vulnerable users into making financial decisions.","label":"potentially_prohibited"}
+{"text":"A school uses AI to analyse students' facial expressions in the classroom and infer emotional states such as stress or attention levels.","label":"potentially_prohibited"}
+{"text":"A company uses AI to identify emotionally vulnerable users and target them with personalized ads to influence their purchasing decisions.","label":"potentially_prohibited"}
+{"text":"An online platform uses AI to subtly adjust content to influence users' political opinions without their awareness.","label":"potentially_prohibited"}
+{"text":"A system uses AI to classify people based on their facial features into personality or behavioral categories.","label":"potentially_prohibited"}
+{"text":"A mobile app uses AI to detect when children are emotionally distressed and pushes in-app purchases at those moments.","label":"potentially_prohibited"}
+{"text":"An organization uses AI to assign trustworthiness scores to individuals based on their behavior across different services.","label":"potentially_prohibited"}
+{"text":"A platform uses AI to identify users' emotional weaknesses and exploit them to increase engagement.","label":"potentially_prohibited"}
+{"text":"An organization uses AI to assign behavioral risk scores to individuals across multiple services.","label":"potentially_prohibited"}
+{"text":"A platform uses AI to recommend content based on user preferences without attempting to manipulate or exploit vulnerabilities.","label":"lower_risk"}
+{"text":"An AI system targets emotionally vulnerable people with financial offers they would not otherwise choose.","label":"potentially_prohibited"}
+{"text":"A platform uses AI to exploit users' psychological weaknesses to increase purchases.","label":"potentially_prohibited"}
+{"text":"An app uses AI to pressure vulnerable users into buying expensive products.","label":"potentially_prohibited"}
+{"text":"A university uses AI to rank student applications based on school grades so admissions staff can review higher-priority applications first.","label":"possible_high_risk"}
+{"text":"A university uses AI to automatically reject student applications with the lowest grades before admissions staff review them.","label":"likely_high_risk"}
+{"text":"A university uses AI to reject student applications based on sensitive personal data such as ethnicity, religion, health status, or political views.","label":"potentially_prohibited"}
+{"text":"A healthcare chatbot uses AI to assess the urgency of patient symptoms and assign a priority level for medical assistance, which staff review.","label":"possible_high_risk"}
+{"text":"An AI system determines which patients are approved for priority placement in surgery queues based on their medical condition.","label":"likely_high_risk"}
+{"text":"An AI system prioritizes patients for surgery based on their ability to pay rather than medical need.","label":"potentially_prohibited"}
+{"text":"A public authority uses AI to rank grant applications so staff can review higher-priority cases first.","label":"possible_high_risk"}
+{"text":"An AI system assesses grant applications and automatically decides whether to approve or reject them based on eligibility criteria.","label":"likely_high_risk"}
+{"text":"An AI system systematically favors large companies over small businesses when deciding grant approvals, regardless of eligibility criteria.","label":"potentially_prohibited"}
+{"text":"An AI system ranks social benefit applications based on applicants' monthly income so staff can review higher-priority cases first.","label":"possible_high_risk"}
+{"text":"An AI system automatically rejects social benefit applications if the applicant’s monthly income exceeds the eligibility threshold.","label":"likely_high_risk"}
+{"text":"An AI system rejects social benefit applications without considering essential medical expenses, systematically disadvantaging vulnerable applicants.","label":"potentially_prohibited"}
