@@ -99,6 +99,38 @@ export default function App() {
               <strong>{(value * 100).toFixed(1)}%</strong>
             </div>
           ))}
+          
+          <p className="similar-help">
+            Similar cases are retrieved from the training dataset using embedding similarity.
+          </p>
+          
+          {result.similar_cases && (
+            <>
+              <h3>Similar cases</h3>
+
+              {result.similar_cases.map((item, index) => {
+                const isMatch = item.label === result.label;
+
+                return (
+                  <div
+                    className={`similar-case ${isMatch ? "match" : "different"}`}
+                    key={index}
+                  >
+                    <p>{item.text}</p>
+
+                    <small>
+                      <span className="case-label">
+                        {isMatch ? "✓ Same risk level" : "○ Different risk level"}
+                      </span>
+                      {" · "}
+                      {LABEL_MAP[item.label]} · Similarity:{" "}
+                      {(item.similarity * 100).toFixed(1)}%
+                    </small>
+                  </div>
+                );
+              })}
+            </>
+          )}
 
           <p>{EXPLANATIONS[result.label]}</p>
           

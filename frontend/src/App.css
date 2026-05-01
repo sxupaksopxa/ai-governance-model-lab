@@ -228,3 +228,38 @@ button {
   flex-direction: column;
   align-items: center;
 }
+
+.similar-case {
+  text-align: left;
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.similar-case p {
+  margin: 0 0 8px;
+}
+
+.similar-case small {
+  color: #666;
+}
+
+.similar-case.match {
+  border-left: 5px solid #4caf50;
+}
+
+.similar-case.different {
+  border-left: 5px solid #b0b0b0;
+}
+
+.case-label {
+  font-weight: 600;
+}
+
+.similar-help {
+  font-size: 14px;
+  color: #666;
+  margin-top: -4px;
+}
