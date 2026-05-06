@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from src.chroma_retrieval import find_similar_cases_chroma
 
-MODEL_DIR = "models/ai-risk-classifier-roberta"
+MODEL_DIR = "distilbert-base-uncased-finetuned-sst-2-english"
 
 app = FastAPI(title="AI Governance Model API")
 
