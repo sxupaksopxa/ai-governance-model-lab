@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
-from src.chroma_db import find_similar_cases_chroma
+from src.chroma_retrieval import find_similar_cases_chroma
 
 MODEL_DIR = "models/ai-risk-classifier-roberta"
 
