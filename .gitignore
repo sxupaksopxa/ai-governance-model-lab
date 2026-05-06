@@ -1,6 +1,21 @@
+# Python
 .venv/
-node_modules/
+.venv-lora/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Node / frontend
+node_modules/
+dist/
+
+# Models & data
 models/
+chroma_db/
+
+# OS
 .DS_Store
+
+# Environment variables
+.env
