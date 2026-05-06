@@ -6,7 +6,7 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
 
 client = chromadb.PersistentClient(path="./chroma_db")
-collection = client.get_collection(name="ai_use_cases")
+collection = client.get_or_create_collection(name="ai_use_cases")
 
 
 def find_similar_cases_chroma(text, top_k=3):
