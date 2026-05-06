@@ -1,0 +1,4 @@
+{"text":"We use AI to summarize internal meeting notes.","expected_label":"lower_risk"}
+{"text":"A system ranks insurance claims for staff review.","expected_label":"possible_high_risk"}
+{"text":"An AI system automatically rejects job applicants.","expected_label":"likely_high_risk"}
+{"text":"A company uses AI to manipulate vulnerable users into buying financial products.","expected_label":"potentially_prohibited"}
