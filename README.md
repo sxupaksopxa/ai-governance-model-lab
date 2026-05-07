@@ -1,10 +1,18 @@
 # AI Governance Model Lab
 
+## Live Demo
+
+Frontend:
+https://ai-governance-model-lab.vercel.app
+
+Backend API:
+https://ai-governance-model-lab.onrender.com/docs
+
 ## Overview
 
 AI Governance Model Lab is a practical AI project focused on AI governance, risk classification, and semantic retrieval.
 
-The idea behind the project was to better understand how modern AI systems can be combined into a working end-to-end application instead of only experimenting in notebooks.
+The project was created to explore how modern AI components can be combined into a practical end-to-end governance-oriented application instead of remaining isolated notebook experiments.
 
 The project combines:
 
@@ -71,6 +79,17 @@ Users can describe an AI use case in natural language and receive:
 
 ---
 
+## Practical deployment challenges
+
+The deployment process also involved solving practical engineering challenges such as:
+- Cloud memory limitations,
+- Model loading and hosting,
+- API routing,
+- CORS configuration,
+- Vector database initialization,
+- Frontend/Backend integration.
+
+
 # Example Workflow
 
 1. User enters AI use case description.
@@ -107,11 +126,11 @@ Confidence: 96.2%
 
 ### Example 4
 Input:
-"An AI system automatically rejects job applicants."
+"A company uses AI to manipulate vulnerable users into buying financial products."
 
 Output:
 Potentially Prohibited
-Confidence: 93.3%
+Confidence: 93.5%
 
 ---
 
@@ -160,6 +179,16 @@ npm install
 npm run dev
 ```
 
+## Architecture Diagram
+
+Frontend (Vercel)
+        ↓
+FastAPI Backend (Render)
+        ↓
+RoBERTa Model (HF Hub)
+        ↓
+ChromaDB Retrieval
+
 ---
 
 # Environment Variables
@@ -178,7 +207,7 @@ VITE_API_URL=https://ai-governance-model-lab.onrender.com
 * Enhanced retrieval ranking
 * Expanded training dataset
 * Better UI/UX visualization
-* Explainable AI output
+* Improved explainability and governance recommendations
 * Evaluation metrics dashboard
 * Multi-language support
 
