@@ -182,12 +182,16 @@ npm run dev
 ## Architecture Diagram
 
 Frontend (Vercel)
+
         ↓
 FastAPI Backend (Render)
+
         ↓
 RoBERTa Model (HF Hub)
+
         ↓
 ChromaDB Retrieval
+
 
 ---
 
