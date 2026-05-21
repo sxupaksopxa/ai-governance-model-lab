@@ -1,19 +1,73 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import os
+import json
+from contextlib import asynccontextmanager
+
 import torch
+import chromadb
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from sentence_transformers import SentenceTransformer
+
 from src.chroma_retrieval import find_similar_cases_chroma
 
-MODEL_DIR = "Begai/ai-risk-classifier-roberta"
+MODEL_DIR = os.getenv("MODEL_DIR", "Begai/ai-risk-classifier-roberta")
+CHROMA_PATH = os.getenv("CHROMA_PATH", "./chroma_db")
+EMBEDDING_MODEL_NAME = os.getenv(
+    "EMBEDDING_MODEL_NAME", "sentence-transformers/all-MiniLM-L6-v2"
+)
 
-app = FastAPI(title="AI Governance Model API")
+MAX_INPUT_LENGTH = 2000
 
-from fastapi.middleware.cors import CORSMiddleware
+app_state = {}
 
-origins = [
-    "http://localhost:5173",
-]
+
+class PredictionRequest(BaseModel):
+    text: str = Field(
+        ...,
+        min_length=1,
+        max_length=MAX_INPUT_LENGTH,
+        description="AI use case description to classify",
+    )
+
+
+class PredictionResponse(BaseModel):
+    label: str
+    confidence: float
+    probabilities: dict[str, float]
+    similar_cases: list[dict]
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+    model = model.to(device)
+    model.eval()
+
+    embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+
+    client = chromadb.PersistentClient(path=CHROMA_PATH)
+    collection = client.get_or_create_collection(name="ai_use_cases")
+
+    app_state["device"] = device
+    app_state["tokenizer"] = tokenizer
+    app_state["model"] = model
+    app_state["embedding_model"] = embedding_model
+    app_state["collection"] = collection
+
+    yield
+
+    app_state.clear()
+
+
+app = FastAPI(
+    title="AI Governance Model API",
+    lifespan=lifespan,
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,87 +76,29 @@ app.add_middleware(
         "https://ai-governance-model-lab.vercel.app",
     ],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
-class PredictionRequest(BaseModel):
-    text: str
-
-class PredictionResponse(BaseModel):
-    label: str
-    confidence: float
-    probabilities: dict[str, float]
-    similar_cases: list[dict]
-
-tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
-model.eval()
-
-# Embedding setup
-import json
-from sentence_transformers import SentenceTransformer, util
-
-EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-DATA_PATH = "data/training_data.jsonl"
-
-embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
-
-
-def load_cases(path):
-    cases = []
-    with open(path, "r") as f:
-        for line in f:
-            cases.append(json.loads(line))
-    return cases
-
-
-training_cases = load_cases(DATA_PATH)
-case_texts = [case["text"] for case in training_cases]
-case_embeddings = embedding_model.encode(case_texts, convert_to_tensor=True)
-
-import chromadb
-from sentence_transformers import SentenceTransformer
-
-client = chromadb.PersistentClient(path="./chroma_db")
-collection = client.get_collection(name="ai_use_cases")
-
-embedding_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-
-def find_similar_cases(text, top_k=3):
-    embedding = embedding_model.encode([text]).tolist()
-
-    results = collection.query(
-        query_embeddings=embedding,
-        n_results=top_k
-    )
-
-    similar_cases = []
-
-    for i in range(len(results["documents"][0])):
-        similar_cases.append({
-            "text": results["documents"][0][i],
-            "label": results["metadatas"][0][i]["label"],
-            "similarity": round(1 - results["distances"][0][i], 4)
-        })
-
-    return similar_cases
 
 @app.get("/")
 def health_check():
     return {"status": "ok", "message": "AI Governance Model API is running"}
 
 
-@app.post("/predict", response_model=PredictionResponse)
-def predict(request: PredictionRequest):
+def _predict(text: str) -> tuple[str, float, dict[str, float]]:
+    tokenizer = app_state["tokenizer"]
+    model = app_state["model"]
+    device = app_state["device"]
+
     inputs = tokenizer(
-        request.text,
+        text,
         return_tensors="pt",
         truncation=True,
         padding=True,
         max_length=160,
     )
+    inputs = {k: v.to(device) for k, v in inputs.items()}
 
     with torch.no_grad():
         outputs = model(**inputs)
@@ -117,8 +113,21 @@ def predict(request: PredictionRequest):
 
     label = model.config.id2label[predicted_id]
     confidence = round(probabilities_tensor[predicted_id].item(), 4)
-    
-    similar_cases = find_similar_cases_chroma(request.text)
+
+    return label, confidence, probabilities
+
+
+@app.post("/predict", response_model=PredictionResponse)
+def predict(request: PredictionRequest):
+    try:
+        label, confidence, probabilities = _predict(request.text)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Inference failed: {exc}")
+
+    try:
+        similar_cases = find_similar_cases_chroma(request.text)
+    except Exception as exc:
+        similar_cases = []
 
     return {
         "label": label,
@@ -126,36 +135,9 @@ def predict(request: PredictionRequest):
         "probabilities": probabilities,
         "similar_cases": similar_cases,
     }
+
 
 @app.post("/predict-chroma", response_model=PredictionResponse)
 def predict_chroma(request: PredictionRequest):
-    inputs = tokenizer(
-        request.text,
-        return_tensors="pt",
-        truncation=True,
-        padding=True,
-        max_length=160,
-    )
-
-    with torch.no_grad():
-        outputs = model(**inputs)
-
-    probabilities_tensor = torch.softmax(outputs.logits, dim=-1)[0]
-    predicted_id = torch.argmax(probabilities_tensor).item()
-
-    probabilities = {
-        model.config.id2label[i]: round(prob.item(), 4)
-        for i, prob in enumerate(probabilities_tensor)
-    }
-
-    label = model.config.id2label[predicted_id]
-    confidence = round(probabilities_tensor[predicted_id].item(), 4)
-
-    similar_cases = find_similar_cases_chroma(request.text)
-
-    return {
-        "label": label,
-        "confidence": confidence,
-        "probabilities": probabilities,
-        "similar_cases": similar_cases,
-    }
+    """Alias for /predict. Kept for backward compatibility."""
+    return predict(request)

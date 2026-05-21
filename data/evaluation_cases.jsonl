@@ -1,4 +1,4 @@
-{"text":"We use AI to summarize internal meeting notes.","expected_label":"lower_risk"}
-{"text":"A system ranks insurance claims for staff review.","expected_label":"possible_high_risk"}
-{"text":"An AI system automatically rejects job applicants.","expected_label":"likely_high_risk"}
-{"text":"A company uses AI to manipulate vulnerable users into buying financial products.","expected_label":"potentially_prohibited"}
+{"text":"An organization uses AI to summarize internal meeting notes and highlight key discussion points for employees. Human staff review the summaries and make all operational decisions.","expected_label":"lower_risk"}
+{"text":"An insurance provider uses AI to prioritize incoming claims for review based on claim characteristics and customer data. Human employees make all final claim decisions, but the AI influences processing order and escalation priority.","expected_label":"possible_high_risk"}
+{"text":"A company uses AI to score employees for promotion suitability based on performance records, manager feedback, and productivity data. The scores are used by managers when making promotion decisions.","expected_label":"likely_high_risk"}
+{"text":"A financial services company uses AI to identify financially vulnerable customers and automatically target them with personalized high-interest loan offers designed to maximize conversion rates.","expected_label":"potentially_prohibited"}

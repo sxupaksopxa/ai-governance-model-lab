@@ -1,10 +1,9 @@
 from sentence_transformers import SentenceTransformer, util
 import json
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+MODEL_NAME ="BAAI/bge-base-en-v1.5"
 
 model = SentenceTransformer(MODEL_NAME)
-
 
 # Load your dataset
 def load_data(path):

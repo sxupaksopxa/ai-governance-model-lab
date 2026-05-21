@@ -1,14 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-
 MODEL_DIR = "models/ai-risk-classifier-roberta"
 
 
-def predict(text: str):
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
-
+def predict(text: str, tokenizer, model, device):
     inputs = tokenizer(
         text,
         return_tensors="pt",
@@ -16,6 +12,7 @@ def predict(text: str):
         padding=True,
         max_length=160,
     )
+    inputs = {k: v.to(device) for k, v in inputs.items()}
 
     with torch.no_grad():
         outputs = model(**inputs)
@@ -26,10 +23,22 @@ def predict(text: str):
     label = model.config.id2label[predicted_id]
     confidence = probabilities[predicted_id].item()
 
-    return label, confidence
+    probs_dict = {
+        model.config.id2label[i]: round(prob.item(), 4)
+        for i, prob in enumerate(probabilities)
+    }
+
+    return label, confidence, probs_dict
 
 
-if __name__ == "__main__":
+def main():
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+    model = model.to(device)
+    model.eval()
+
     examples = [
         "We use AI to summarize internal meeting notes.",
         "An AI system recommends which job applicants should be rejected.",
@@ -37,17 +46,14 @@ if __name__ == "__main__":
         "A system ranks insurance claims for staff review.",
     ]
 
-for text in examples:
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+    for text in examples:
+        label, confidence, probs = predict(text, tokenizer, model, device)
 
-    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=160)
+        print("\nText:", text)
+        print(f"Predicted: {label} (confidence: {round(confidence, 4)})")
+        for class_name, score in probs.items():
+            print(f"  {class_name}: {score}")
 
-    with torch.no_grad():
-        outputs = model(**inputs)
 
-    probabilities = torch.softmax(outputs.logits, dim=-1)[0]
-
-    print("\nText:", text)
-    for i, prob in enumerate(probabilities):
-        print(model.config.id2label[i], ":", round(prob.item(), 4))
+if __name__ == "__main__":
+    main()

@@ -1,5 +1,34 @@
 # AI Governance Model Lab
 
+AI Governance Model Lab is a governance-focused AI assessment platform designed to classify AI use cases according to potential governance and regulatory risk patterns.
+The platform combines:
+- Fine-tuned AI governance classification
+- Semantic retrieval of comparable governance cases
+- Explainability-oriented assessment logic
+- Governance-focused UI and assessment workflow
+
+The project is designed as a practical governance support tool for SMEs, consultants, governance teams, and organizations exploring AI adoption.
+
+# Governance-Focused Classification
+
+The application evaluates AI use cases and classifies them into governance-oriented categories:
+- Lower Risk
+- Possible High Risk
+- Likely High Risk
+- Potentially Prohibited
+
+The classification logic is based on a fine-tuned RoBERTa model trained on governance-oriented AI use cases.
+
+# Comparable Governance Cases
+
+The platform retrieves semantically related governance examples using ChromaDB vector retrieval and BAAI embeddings.
+
+This helps users:
+- understand similar governance scenarios
+- compare risk patterns
+- identify nearby governance boundaries
+- improve explainability and trust
+
 ## Live Demo
 
 Frontend:
@@ -8,40 +37,19 @@ https://ai-governance-model-lab.vercel.app
 Backend API:
 https://ai-governance-model-lab.onrender.com/docs
 
-## Overview
-
-AI Governance Model Lab is a practical AI project focused on AI governance, risk classification, and semantic retrieval.
-
-The project was created to explore how modern AI components can be combined into a practical end-to-end governance-oriented application instead of remaining isolated notebook experiments.
-
-The project combines:
-
-* Fine-tuned RoBERTa classification model
-* FastAPI backend
-* React + Vite frontend
-* ChromaDB similarity retrieval
-* Hugging Face model hosting
-* Cloud deployment with Render and Vercel
-
-
-Users can describe an AI use case in natural language and receive:
-
-- a predicted governance-oriented risk label,
-- confidence information,
-- and semantically similar AI governance examples.
-
 ---
 
 # Live Architecture
 
 ## Frontend
 
-* React + Vite
+* React + Vite + CSS
 * Hosted on Vercel
 
 ## Backend
 
 * FastAPI
+* Python
 * Hosted on Render
 
 ## AI Components
@@ -53,15 +61,16 @@ Users can describe an AI use case in natural language and receive:
 
 ### Retrieval
 
-* sentence-transformers/all-MiniLM-L6-v2
+* Hugging Face Transformers
+* Sentence Transformers
 * ChromaDB vector database
-* Similar case retrieval
+* Similar case retrieval: BAAI/bge-base-en-v1.5 embeddings
 
 ---
 
 ## Features
 
-- Custom dataset (~90 curated AI governance and risk assessment use cases)
+- Custom dataset (~200 curated AI governance and risk assessment use cases)
 - Fine-tuned RoBERTa model for governance-oriented risk classification
 - FastAPI backend for real-time AI inference
 - React + Vite frontend for interactive testing and experimentation
@@ -134,35 +143,6 @@ Confidence: 93.5%
 
 ---
 
-# Technology Stack
-
-## Frontend
-
-* React
-* Vite
-* JavaScript
-
-## Backend
-
-* Python
-* FastAPI
-* Uvicorn
-
-## AI / ML
-
-* Hugging Face Transformers
-* PyTorch
-* Sentence Transformers
-* ChromaDB
-
-## Deployment
-
-* Vercel
-* Render
-* Hugging Face Hub
-
----
-
 # Local Development
 
 ## Backend
@@ -190,8 +170,10 @@ FastAPI Backend (Render)
 RoBERTa Model (HF Hub)
 
         ↓
-ChromaDB Retrieval
+ChromaDB Semantic Retrieval
 
+        ↓
+Comparable Gevernance Cases
 
 ---
 
@@ -203,20 +185,43 @@ ChromaDB Retrieval
 VITE_API_URL=https://ai-governance-model-lab.onrender.com
 ```
 
+# Privacy & Data Minimization
+
+The platform is designed with privacy and data minimization principles in mind.
+
+Users should not submit:
+- confidential company information
+- personal data
+- proprietary information
+- internal identifiers
+
+Future governance telemetry and feedback features are planned with anonymization and GDPR-oriented design considerations.
+
 ---
 
 # Future Improvements
 
-* Improved governance recommendations
-* Enhanced retrieval ranking
-* Expanded training dataset
-* Better UI/UX visualization
-* Improved explainability and governance recommendations
-* Evaluation metrics dashboard
+* governance feedback loops
+* suggested governance actions
+* governance metadata extraction
+* PDF assessment export
+* anonymized governance telemetry
+* expanded explainability features
+* additional governance domains and datasets
 * Multi-language support
+
+
+# Known Limitations
+
+This platform:
+- provides governance-oriented guidance
+- is not legal advice
+- is not a formal EU AI Act conformity assessment
+- may produce uncertain or boundary classifications
+- should be used as governance support tooling
 
 ---
 
-# Disclaimer
+# License
 
-This project is a learning and research prototype focused on AI governance workflows and educational exploration. It does not provide legal or regulatory advice.
+This project is currently shared for portfolio, educational, and governance experimentation purposes.

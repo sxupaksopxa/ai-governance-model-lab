@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-governance-model-lab.vercel.app/sitemap.xml

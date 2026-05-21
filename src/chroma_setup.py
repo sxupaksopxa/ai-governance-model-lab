@@ -2,7 +2,7 @@ import chromadb
 import json
 from sentence_transformers import SentenceTransformer
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+MODEL_NAME = "BAAI/bge-base-en-v1.5"
 DATA_PATH = "data/training_data.jsonl"
 
 model = SentenceTransformer(MODEL_NAME)
