@@ -491,7 +491,7 @@ export default function App() {
 
         <footer className="footer">
           <p>
-            &copy; 2026 BKlein Digital Lab &mdash; AI Governance Model Lab
+            &copy; 2026 BKlein Digital Labs &mdash; AI Governance Model Lab
           </p>
         </footer>
       </main>
