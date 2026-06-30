@@ -1,21 +1,63 @@
+# ==========================
 # Python
+# ==========================
+
 .venv/
 .venv-lora/
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 
-# Node / frontend
+# ==========================
+# Node / Frontend
+# ==========================
+
 node_modules/
 dist/
+coverage/
 
-# Models & data
+# ==========================
+# AI Models & Data
+# ==========================
+
 models/
 chroma_db/
 
-# OS
-.DS_Store
+# ==========================
+# Environment
+# ==========================
 
-# Environment variables
 .env
+.env.*
+!.env.example
+
+# ==========================
+# IDE
+# ==========================
+
+.vscode/
+.idea/
+
+# ==========================
+# Operating System
+# ==========================
+
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+
+*.log
+
+# ==========================
+# Temporary files
+# ==========================
+
+*.tmp
+*.bak

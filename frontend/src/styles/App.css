@@ -1,71 +1,9 @@
-/* ── Base ── */
-* {
-  box-sizing: border-box;
-}
+/* =========================================================
+   AI Governance Model Lab — App-specific Styles
+   Only styles unique to this application
+   ========================================================= */
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: #f4f5f7;
-  color: #1f2937;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Top nav ── */
-.top-nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  font-size: 14px;
-  color: #9ca3af;
-}
-
-.top-nav-item {
-  cursor: pointer;
-  transition: color 0.15s;
-}
-
-.top-nav-item:hover {
-  color: #6b7280;
-}
-
-.top-nav-sep {
-  color: #d1d5db;
-}
-
-/* ── Layout ── */
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.frame {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 18px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 36px 32px;
-  max-width: 840px;
-  margin: 0 auto;
-}
-
-@media (max-width: 640px) {
-  .frame {
-    padding: 28px 20px;
-  }
-}
-
+/* ── Home title ── */
 .frame h1 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -74,9 +12,21 @@ body {
   letter-spacing: -0.3px;
 }
 
-.subtitle {
-  font-size: 0.9375rem;
+.input-note,
+.ai-notice {
+  font-size: 12px;
   color: #6b7280;
+  margin: 6px 0 12px;
+  line-height: 1.5;
+}
+
+.ai-notice {
+  margin-top: 14px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #1f2124;
   margin: 0 0 28px;
 }
 
@@ -95,39 +45,13 @@ body {
   letter-spacing: 0.4px;
 }
 
+textarea {
+  min-height: 120px;
+}
+
 .textarea-wrap {
   position: relative;
-}
-
-textarea {
   width: 100%;
-  min-height: 120px;
-  padding: 12px 14px;
-  padding-bottom: 30px;
-  font-size: 15px;
-  font-family: inherit;
-  line-height: 1.6;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  resize: vertical;
-  background: #ffffff;
-  color: #111827;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-textarea::placeholder {
-  color: #9ca3af;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
-}
-
-textarea:disabled {
-  background: #f9fafb;
-  cursor: not-allowed;
 }
 
 .char-count {
@@ -141,38 +65,6 @@ textarea:disabled {
   background: rgba(255, 255, 255, 0.9);
   padding: 2px 4px;
   border-radius: 4px;
-}
-
-/* ── Button ── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 14px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: inherit;
-  color: #ffffff;
-  background: #4f46e5;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.05s;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: #4338ca;
-}
-
-.btn-primary:active:not(:disabled) {
-  transform: translateY(1px);
-}
-
-.btn-primary:disabled {
-  background: #a5b4fc;
-  cursor: not-allowed;
 }
 
 /* ── Spinner ── */
@@ -199,6 +91,8 @@ textarea:disabled {
 }
 
 /* ── Examples ── */
+
+/* ── Examples ── */
 .examples {
   margin-top: 20px;
   text-align: left;
@@ -214,22 +108,27 @@ textarea:disabled {
 
 .example-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
   gap: 8px;
   margin-top: 8px;
 }
 
 .example-chip {
-  display: inline-block;
-  padding: 6px 12px;
-  font-size: 13px;
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  line-height: 1.4;
   font-family: inherit;
   color: #374151;
   background: #f3f4f6;
   border: 1px solid #e5e7eb;
-  border-radius: 999px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
+  text-align: left;
+  white-space: normal;
 }
 
 .example-chip:hover:not(:disabled) {
@@ -241,6 +140,7 @@ textarea:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 
 /* ── Result card ── */
 .result-card {
@@ -356,31 +256,6 @@ textarea:disabled {
   color: #374151;
   text-align: right;
   flex-shrink: 0;
-}
-
-@media (max-width: 640px) {
-  .prob-bar {
-    flex-wrap: wrap;
-    gap: 4px 8px;
-  }
-
-  .prob-label {
-    width: auto;
-    flex: 1;
-    text-align: left;
-    font-size: 0.75rem;
-  }
-
-  .prob-value {
-    width: auto;
-    text-align: right;
-    font-size: 0.75rem;
-  }
-
-  .prob-track {
-    width: 100%;
-    order: 3;
-  }
 }
 
 .prob-track {
@@ -541,91 +416,60 @@ textarea:disabled {
   color: #15803d;
 }
 
-/* ── Methodology page ── */
-.method-frame {
-  text-align: left;
-  padding: 32px 36px;
-}
-
-.method-frame h1 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 20px;
-  color: #111827;
-}
-
-.btn-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 16px;
-  padding: 6px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
-  color: #4b5563;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.btn-back:hover {
-  background: #e5e7eb;
-}
-
-.method-section {
-  margin-bottom: 24px;
-}
-
-.method-section h2 {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: #374151;
-  margin: 0 0 8px;
-}
-
-.method-section p {
-  font-size: 0.875rem;
-  color: #4b5563;
-  margin: 0 0 10px;
+/* ── JSON preview ── */
+.json-preview {
+  margin-top: 16px;
+  padding: 18px;
+  max-height: 420px;
+  overflow: auto;
+  background: #0f172a;
+  color: #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.8rem;
   line-height: 1.6;
 }
 
-.method-list {
-  margin: 0;
-  padding-left: 20px;
-  color: #4b5563;
-  font-size: 0.875rem;
-  line-height: 1.7;
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .prob-bar {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .prob-label {
+    width: auto;
+    flex: 1;
+    text-align: left;
+    font-size: 0.75rem;
+  }
+
+  .prob-value {
+    width: auto;
+    text-align: right;
+    font-size: 0.75rem;
+  }
+
+  .prob-track {
+    width: 100%;
+    order: 3;
+  }
 }
 
-.method-list li {
-  margin-bottom: 8px;
+.input-note,
+.ai-notice {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 6px 0 12px;
+  line-height: 1.5;
 }
 
-.method-list li strong {
-  color: #111827;
-  font-weight: 600;
+.ai-notice {
+  margin-top: 14px;
 }
 
-.tech-list {
-  list-style: square;
-}
-
-.numbered {
-  list-style: decimal;
-}
-
-/* ── Footer ── */
-.footer {
-  margin-top: 32px;
-  font-size: 13px;
-  color: #9ca3af;
-  text-align: center;
-}
-
-.footer p {
-  margin: 0;
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px;
 }

@@ -1,0 +1,45 @@
+{
+  "dtp_version": "0.0.1",
+
+  "profile": {
+    "version": "0.1.0",
+    "status": "published"
+  },
+
+  "service": {
+    "name": "AI Governance Model Lab",
+    "provider": "BKlein Digital Labs",
+    "purpose": "Governance-focused AI classification and retrieval",
+    "website": "https://ai-governance-model-lab.vercel.app",
+    "domain": "ai-governance-model-lab.vercel.app"
+  },
+
+  "verification": {
+    "status": "self-declared"
+  },
+
+  "artificial_intelligence": {
+    "ai_usage": true,
+    "primary_purpose": "Governance assessment of AI use cases",
+    "ai_capabilities": [
+      "classification",
+      "semantic_retrieval"
+    ],
+    "human_oversight": true,
+    "explainability": true
+  },
+
+  "governance": {
+    "decision_support": true,
+    "automated_decisions": false,
+    "methodology_published": true
+  },
+
+  "privacy": {
+    "privacy_policy_available": true
+  },
+
+  "contact": {
+    "email": "contact@bkleindigital.com"
+  }
+}

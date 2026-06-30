@@ -1,5 +1,7 @@
 # AI Governance Model Lab
 
+Organizations are increasingly adopting AI systems while facing growing governance and regulatory expectations. AI Governance Model Lab is a practical assessment platform that helps organizations evaluate AI use cases by combining governance-oriented classification with semantic retrieval of comparable governance scenarios.
+
 AI Governance Model Lab is a governance-focused AI assessment platform designed to classify AI use cases according to potential governance and regulatory risk patterns.
 The platform combines:
 - Fine-tuned AI governance classification
@@ -24,10 +26,9 @@ The classification logic is based on a fine-tuned RoBERTa model trained on gover
 The platform retrieves semantically related governance examples using ChromaDB vector retrieval and BAAI embeddings.
 
 This helps users:
-- understand similar governance scenarios
-- compare risk patterns
-- identify nearby governance boundaries
-- improve explainability and trust
+- compare similar governance scenarios
+- understand governance boundaries
+- improve assessment explainability
 
 ## Live Demo
 
@@ -37,9 +38,28 @@ https://ai-governance-model-lab.vercel.app
 Backend API:
 https://ai-governance-model-lab.onrender.com/docs
 
+
+## Screenshots
+
+### Home
+
+![Home](docs/images/01-home.png)
+
+### Assessment Results
+
+![Results](docs/images/02-results.png)
+
+### Digital Trust Profile
+
+![Digital Trust](docs/images/03-digital-trust.png)
+
+### Methodology
+
+![Methodology](docs/images/04-methodology.png)
+
 ---
 
-# Live Architecture
+# Architecture
 
 ## Frontend
 
@@ -70,21 +90,34 @@ https://ai-governance-model-lab.onrender.com/docs
 
 ## Features
 
-- Custom dataset (~200 curated AI governance and risk assessment use cases)
-- Fine-tuned RoBERTa model for governance-oriented risk classification
-- FastAPI backend for real-time AI inference
-- React + Vite frontend for interactive testing and experimentation
-- Probability-based output and confidence scoring for transparency
-- Semantic similarity search using Sentence Transformers embeddings
-- ChromaDB vector database for retrieval of related governance examples
-- Explainable results through similar real-world AI use cases
-- Cloud deployment architecture using Render (backend) and Vercel (frontend)
-- Hugging Face model hosting and integration
-- REST API communication between frontend and backend services
-- Retrieval-augmented workflow combining classification and semantic search
-- End-to-end AI deployment pipeline with GitHub integration
-- Practical AI engineering setup including model serving, vector search, and cloud deployment
-- Clean user interface with confidence scores, risk labels, and similar case retrieval
+### AI Capabilities
+- Fine-tuned RoBERTa classification
+- Semantic retrieval
+- Confidence scoring
+- Comparable governance cases
+
+### Platform
+- FastAPI backend
+- React + Vite frontend
+- REST API
+- Render + Vercel deployment
+
+### Engineering
+- Custom dataset
+- ChromaDB
+- Hugging Face integration
+- End-to-end deployment pipeline
+
+## Digital Trust
+
+The project includes a Digital Trust Profile that publishes structured transparency information about the service in both human-readable and machine-readable formats.
+
+- Digital Trust Profile
+- Machine-readable JSON (`/.well-known/digital-trust.json`)
+- AI Transparency Notice
+- Privacy and Governance information
+
+This implementation also serves as the first reference implementation of the proposed Digital Trust Profile draft standard.
 
 ---
 
@@ -201,14 +234,14 @@ Future governance telemetry and feedback features are planned with anonymization
 
 # Future Improvements
 
-* governance feedback loops
-* suggested governance actions
-* governance metadata extraction
-* PDF assessment export
-* anonymized governance telemetry
-* expanded explainability features
-* additional governance domains and datasets
+## Platform
 * Multi-language support
+* PDF reports
+
+## AI
+* Governance feedback
+* Additional datasets
+* Explainability
 
 
 # Known Limitations
@@ -222,6 +255,13 @@ This platform:
 
 ---
 
-# License
+## License
 
-This project is currently shared for portfolio, educational, and governance experimentation purposes.
+Licensed under the Apache License, Version 2.0.
+See the LICENSE file for details.
+
+## Author
+
+BKlein Digital Labs
+
+Building practical AI solutions for a digital world.
